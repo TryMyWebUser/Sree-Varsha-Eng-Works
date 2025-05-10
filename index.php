@@ -451,7 +451,7 @@
                 </style>
                 <div class="container">
                     <div class="sec-title sec-title--center">
-                        <h6 class="sec-title__tagline">Our Latest Products</h6>
+                        <h6 class="sec-title__tagline">Our Products</h6>
                         <!-- /.sec-title__tagline -->
 
                         <h2 class="sec-title__title">Sree Varsha Engineering Works</h2>

@@ -13,7 +13,7 @@
                                 <!-- /.main-footer__logo -->
                                 <!-- <h2 class="footer-widget__title">Sree Varsha Engineering Works</h2> -->
                             </div>
-                            <p class="m-0 p-0">Sree Varsha Engineering Works is the well known UPVC Window HARDWARE AND DOOR HARDWARE manufacturer in Coimbatore, Tamilnadu India.</p>
+                            <p class="m-0 p-0" style="color: #fff;">Sree Varsha Engineering Works is the well known UPVC Window HARDWARE AND DOOR HARDWARE manufacturer in Coimbatore, Tamilnadu India.</p>
                             <!-- /.footer-widget__title -->
                         </div>
                         <!-- /.footer-widget -->
@@ -24,10 +24,10 @@
                             <h2 class="footer-widget__title">Quick Links</h2>
                             <!-- /.footer-widget__title -->
                             <ul class="list-unstyled footer-widget__links">
-                                <li><a href="index.php">Home</a></li>
-                                <li><a href="about.php">About</a></li>
-                                <li><a href="services.php">Services</a></li>
-                                <li><a href="contact.php">Contact</a></li>
+                                <li><a href="index.php" style="color: #fff;">Home</a></li>
+                                <li><a href="about.php" style="color: #fff;">About</a></li>
+                                <li><a href="services.php" style="color: #fff;">Services</a></li>
+                                <li><a href="contact.php" style="color: #fff;">Contact</a></li>
                             </ul>
                             <!-- /.list-unstyled footer-widget__links -->
                         </div>
@@ -39,11 +39,11 @@
                             <h2 class="footer-widget__title">Contact Us</h2>
                             <!-- /.footer-widget__title -->
                             <div class="footer-widget__contact">
-                                <address class="footer-widget__address">No: 7, Sivaram Nagar, VR puram Hospital, Near, ESI medical college, Uppilipalayam, Coimbatore, Tamil Nadu - 641015</address>
+                                <address class="footer-widget__address" style="color: #fff;">No: 7, Sivaram Nagar, VR puram Hospital, Near, ESI medical college, Uppilipalayam, Coimbatore, Tamil Nadu - 641015</address>
                                 <!-- /.footer-widget__address -->
                                 <ul class="list-unstyled footer-widget__info">
-                                    <li><span class="icon-paper-plane"></span> <a href="mailto:sree0567@gmail.com">sree0567@gmail.com</a></li>
-                                    <li><span class="icon-phone-call"></span> <a href="tel:+919047039929">+91 9047 039 929</a></li>
+                                    <li><span class="icon-paper-plane"></span> <a href="mailto:sree0567@gmail.com" style="color: #fff;">sree0567@gmail.com</a></li>
+                                    <li><span class="icon-phone-call"></span> <a href="tel:+919047039929" style="color: #fff;">+91 9047 039 929</a></li>
                                 </ul>
                                 <!-- /.list-unstyled footer-widget__info -->
                             </div>
@@ -232,7 +232,7 @@
 </a> -->
 
 <a href="https://wa.me/919047039929" class="whatsapp_float1" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
-<a href="tel:+919047039929" class="whatsapp_float2" target="_blank"> <i class="fa fa-phone whatsapp-icon"></i></a>
+<a href="https://wa.me/919952718730" class="whatsapp_float2" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
 
 <script src="assets/vendors/jquery/jquery-3.7.0.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
