@@ -65,13 +65,12 @@
                                 <li class="dropdown">
                                     <a href="#">Products</a>
                                     <ul>
-                                        <li><a href="product_single.php">End caps</a></li>
-                                        <li><a href="#">Window Handle</a></li>
-                                        <li><a href="#">Microgreen trays</a></li>
-                                        <li><a href="#">Window Fittings</a></li>
-                                        <li><a href="#">UPVC Window & Door Accessories</a></li>
-                                        <li><a href="#">Sliding Window Door Lock For Hotels</a></li>
-                                        <li><a href="#">Face shield</a></li>
+                                        <?php
+                                            $headline = Operations::getHeadLine();
+                                            foreach ($headline as $head) {
+                                        ?>
+                                        <li><a href="products.php?data=<?= urlencode($head['header']) ?>"><?= $head['header'] ?></a></li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
                                 <li>
@@ -104,16 +103,27 @@
                             <!-- /.main-header__call__inner -->
                         </div>
                         <!-- /.main-header__call -->
-                        <a href="#" class="search-toggler main-header__search">
-                            <i class="icon-search" aria-hidden="true"></i>
-                            <span class="sr-only">Search</span>
-                        </a>
-                        <!-- /.search-toggler -->
-                        <a href="cart.php" class="main-header__cart">
+                        <a type="button" onclick="toggleCart()" class="main-header__cart">
                             <i class="icon-cart" aria-hidden="true"></i>
                             <span class="sr-only">Cart</span>
                         </a>
-                        <!-- /.search-toggler -->
+                        <?php if (!$isLoggedIn) { ?>
+                            <a href="login.php" class="main-header__search">
+                                <i class="icon-user" aria-hidden="true"></i>
+                                <span class="sr-only">Login</span>
+                            </a>
+						<?php } else {
+                            if ($isLoggedIn && $user): ?>
+                                <a href="<?= strtolower($userAccount['owner'] ?? '') === 'admin' ? 'dashboard/' : 'profile.php'; ?>" class="main-header__search">
+                                    <i class="icon-user" aria-hidden="true"></i>
+                                    <span class="sr-only">Profile</span>
+                                </a>
+                        <?php else: ?>
+                                <a href="login.php" class="main-header__search">
+                                    <i class="icon-user" aria-hidden="true"></i>
+                                    <span class="sr-only">Login</span>
+                                </a>
+                        <?php endif; } ?>
                         <a href="contact.php" class="boskery-btn main-header__btn">
                             <span class="boskery-btn__hover"></span>
                             <span class="boskery-btn__hover"></span>
@@ -137,3 +147,83 @@
     <!-- /.container-fluid -->
 </header>
 <!-- /.main-header -->
+
+<style>
+    .cart-drawer {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 350px;
+        height: 100%;
+        background: #f8f9fa;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        padding: 20px;
+        z-index: 1050;
+        overflow-y: auto;
+        transition: all 0.3s ease-in-out;
+    }
+    .cart-drawer.active {
+        display: block;
+    }
+    .cart-header {
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 10px;
+    }
+    .cart-item {
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 0;
+    }
+    .quantity-controls button {
+        min-width: 32px;
+    }
+    .close-btn {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+</style>
+
+<div class="cart-drawer shadow" id="cartDrawer">
+    <div class="cart-header d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">🛒 Shopping Cart</h5>
+        <span class="close-btn text-danger" onclick="toggleCart()">&times;</span>
+    </div>
+
+    <div class="cart-content">
+        <div class="cart-item d-flex align-items-center gap-3">
+            <img src="https://via.placeholder.com/60" class="rounded border" alt="Product">
+            <div class="flex-grow-1">
+                <p class="mb-1 fw-semibold">Product Name</p>
+                <p class="text-danger fw-bold mb-0">Rs. 635</p>
+            </div>
+            <div class="quantity-controls d-flex align-items-center">
+                <button class="btn btn-outline-secondary btn-sm" onclick="decreaseQuantity(this)">−</button>
+                <span class="mx-2 quantity">1</span>
+                <button class="btn btn-outline-secondary btn-sm" onclick="increaseQuantity(this)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-footer mt-4 text-center">
+        <button class="btn btn-danger w-100" onclick="handleGetQuote()">GET QUOTE</button>
+    </div>
+</div>
+<!-- Script -->
+<script>
+    function toggleCart() {
+        document.getElementById("cartDrawer").classList.toggle("active");
+    }
+
+    function increaseQuantity(btn) {
+        const qtySpan = btn.parentElement.querySelector(".quantity");
+        qtySpan.innerText = parseInt(qtySpan.innerText) + 1;
+    }
+
+    function decreaseQuantity(btn) {
+        const qtySpan = btn.parentElement.querySelector(".quantity");
+        const currentQty = parseInt(qtySpan.innerText);
+        if (currentQty > 1) {
+            qtySpan.innerText = currentQty - 1;
+        }
+    }
+</script>

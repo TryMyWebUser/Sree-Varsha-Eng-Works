@@ -120,7 +120,7 @@
                 <a href="mailto:sree0567@gmail.com">sree0567@gmail.com</a>
             </li>
             <li>
-                <i class="fa fa-phone-alt"></i>
+                <i class="fas fa-phone-alt"></i>
                 <a href="tel:9047039929">+ 91 9047 039 929</a>
             </li>
         </ul>
@@ -148,7 +148,7 @@
     <!-- /.mobile-nav__content -->
 </div>
 <!-- /.mobile-nav__wrapper -->
-<div class="search-popup">
+<!-- <div class="search-popup">
     <div class="search-popup__overlay search-toggler"></div>
     <div class="search-popup__content">
         <form role="search" method="get" class="search-popup__form" action="#">
@@ -164,7 +164,7 @@
             </button>
         </form>
     </div>
-</div>
+</div> -->
 <!-- /.search-popup -->
 <aside class="sidebar-one">
     <div class="sidebar-one__overlay sidebar-btn__toggler"></div>

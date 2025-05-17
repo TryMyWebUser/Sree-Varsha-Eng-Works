@@ -1,3 +1,20 @@
+<?php
+
+	include "libs/load.php";
+
+    Session::start();
+
+    // Get user and account details
+    $user = Operations::getUser();
+    $userAccount = Operations::getUserAccount();
+
+    // Check if the user is logged in
+    $isLoggedIn = Session::get('Loggedin');
+
+	$product = Operations::getSingleProduct();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,11 +65,11 @@
                 <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);"></div>
                 <!-- /.page-header__bg -->
                 <div class="container">
-                    <h2 class="page-header__title">End Cap</h2>
+                    <h2 class="page-header__title"><?= $product['category'] ?></h2>
                     <ul class="boskery-breadcrumb list-unstyled">
                         <li><a href="index.php">Home</a></li>
                         <li><span>products</span></li>
-                        <li><span>End Cap</span></li>
+                        <li><span><?= $product['category'] ?></span></li>
                     </ul>
                     <!-- /.thm-breadcrumb list-unstyled -->
                 </div>
@@ -68,49 +85,30 @@
                             <div class="product-details__img">
                                 <div class="swiper product-details__gallery-top">
                                     <div class="swiper-wrapper">
+                                        <?php
+                                            $images = explode(',', $product['images']);
+                                            foreach ($images as $img) {
+                                        ?>
                                         <div class="swiper-slide">
-                                            <!-- <div class="product-details__gallery-top__inner"> -->
-                                                <div class="product-details__gallery-top__image">
-                                                    <img src="assets/images/products/product-d-1-1.png" style="width: 570px;" alt="product details image" />
-                                                </div>
-                                                <!-- /.product-details__gallery-top__image -->
-                                            <!-- </div> -->
-                                            <!-- /.product-details__gallery-top__inner -->
+                                            <div class="product-details__gallery-top__image">
+                                                <img src="dashboard/uploads/products/<?= $img ?>" style="width: 570px;" alt="product details image" />
+                                            </div>
+                                            <!-- /.product-details__gallery-top__image -->
                                         </div>
-                                        <div class="swiper-slide">
-                                            <!-- <div class="product-details__gallery-top__inner"> -->
-                                                <div class="product-details__gallery-top__image">
-                                                    <img src="assets/images/products/product-d-thumb-1-2.png" style="width: 570px;" alt="product details image" />
-                                                </div>
-                                                <!-- /.product-details__gallery-top__image -->
-                                            <!-- </div> -->
-                                            <!-- /.product-details__gallery-top__inner -->
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <!-- <div class="product-details__gallery-top__inner"> -->
-                                                <div class="product-details__gallery-top__image">
-                                                    <img src="assets/images/products/product-d-thumb-1-3.png" style="width: 570px;" alt="product details image" />
-                                                </div>
-                                                <!-- /.product-details__gallery-top__image -->
-                                            <!-- </div> -->
-                                            <!-- /.product-details__gallery-top__inner -->
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="swiper product-details__gallery-thumb">
                                     <div class="swiper-wrapper">
+                                        <?php
+                                            $images = explode(',', $product['images']);
+                                            foreach ($images as $img) {
+                                        ?>
                                         <div class="product-details__gallery-thumb-slide swiper-slide">
-                                            <img src="assets/images/products/product-d-thumb-1-1.png" alt="product details thumb" />
+                                            <img src="dashboard/uploads/products/<?= $img ?>" alt="product details thumb" />
                                         </div>
                                         <!-- /.product-details__gallery-thumb-slide -->
-                                        <div class="product-details__gallery-thumb-slide swiper-slide">
-                                            <img src="assets/images/products/product-d-thumb-1-2.png" alt="product details thumb" />
-                                        </div>
-                                        <!-- /.product-details__gallery-thumb-slide -->
-                                        <div class="product-details__gallery-thumb-slide swiper-slide">
-                                            <img src="assets/images/products/product-d-thumb-1-3.png" alt="product details thumb" />
-                                        </div>
-                                        <!-- /.product-details__gallery-thumb-slide -->
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -120,9 +118,9 @@
                             <div class="product-details__content">
                                 <div class="product-details__top">
                                     <div class="product-details__top__left">
-                                        <h2 class="product-details__name">G Profile End Cap</h2>
+                                        <h2 class="product-details__name"><?= $product['name'] ?></h2>
                                         <!-- /.product-title -->
-                                        <h4 class="product-details__price">₹ 6.10</h4>
+                                        <h4 class="product-details__price">₹<?= $product['of'] ?></h4>
                                         <!-- /.product-price -->
                                     </div>
                                     <!-- /.product-details__price -->
@@ -130,37 +128,26 @@
                                 <!-- /.review-ratings -->
                                 <div class="product-details__excerpt">
                                     <p class="product-details__excerpt__text">
-                                        An End Cap is a protective or finishing component used to close off the open ends of pipes, tubes, or other cylindrical or hollow structures. End caps are commonly used in a variety of industries to protect the interior of pipes.
+                                        <?= $product['dec'] ?>
                                     </p>
                                 </div>
                                 <!-- /.excerp-text -->
                                 <div class="product-details__excerpt product-details__size">
                                     <table>
                                         <tbody>
-                                            <tr>
-                                                <td>Material</td>
-                                                <td>PVC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Size</td>
-                                                <td>20 mm</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Usage/Application</td>
-                                                <td>Plumbing Pipe</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Type</td>
-                                                <td>End Cap</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Colour</td>
-                                                <td>Grey</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Country of Origin</td>
-                                                <td>Made in India</td>
-                                            </tr>
+                                            <?php
+                                                $table = explode(',,', $product['table']);
+                                                foreach ($table as $tab) {
+                                            ?>
+                                                <tr>
+                                                    <?php
+                                                        $datas = explode('==', $tab);
+                                                        foreach ($datas as $data) {
+                                                    ?>
+                                                        <td><?= $data ?></td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -170,21 +157,38 @@
                                     <div class="product-details__quantity">
                                         <h3 class="product-details__content__title">Quantity</h3>
                                         <div class="quantity-box">
-                                            <button type="button" class="sub"><i class="fa fa-minus"></i></button>
-                                            <input type="text" id="1" value="1" />
-                                            <button type="button" class="add"><i class="fa fa-plus"></i></button>
+                                            <!-- MINUS (decrease) -->
+                                            <button type="button" onclick="changeQty(false);" class="decrease sub">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+
+                                            <input type="number" name="quantity" value="1" min="1" id="input-quantity" />
+
+                                            <!-- PLUS (increase) -->
+                                            <button type="button" onclick="changeQty(true);" class="increase add">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <!-- /.quantity -->
                                     <div class="product-details__socials">
                                         <h3 class="product-details__socials__title">Product Status:</h3>
-                                        <p class="text-success m-0 p-0">Available</p>
+                                        <?php if ($product['status'] == 'Available') { ?>
+                                        <p class="text-success m-0 p-0"><?= $product['status'] ?></p>
+                                        <?php } else { ?>
+                                            <p class="text-danger m-0 p-0"><?= $product['status'] ?></p>
+                                        <?php } ?>
                                     </div>
                                     <!-- /.product-details__socials -->
                                 </div>
                                 <!-- /.product-details__info -->
                                 <div class="product-details__buttons">
-                                    <a href="https://wa.me/+919047039929" class="product-details__btn boskery-btn">
+                                    <button onclick="handleBuyNow(this);" class="product-details__btn boskery-btn"
+                                            data-id="<?= $product['id']; ?>" 
+                                            data-name="<?= $product['name']; ?>" 
+                                            data-price="<?= $product['of'] ?>" 
+                                            data-code="<?= $product['code']; ?>" 
+                                            data-image="dashboard/uploads/products/<?= $images[0]; ?>">
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__hover"></span>
@@ -193,7 +197,7 @@
                                         <span class="boskery-btn__hover"></span>
                                         <span class="boskery-btn__text">Buy Now</span>
                                         <i class="icon-cart"></i>
-                                    </a>
+                                    </button>
                                 </div>
                                 <!-- /.qty-btn -->
                             </div>
@@ -207,4 +211,127 @@
             <?php include "temp/footer.php" ?>
 
     </body>
+
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.map"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function changeQty(increase) {
+            var qtyInput = document.getElementById("input-quantity");
+            var qty = parseInt(qtyInput.value);
+
+            if (!isNaN(qty)) {
+                qty = increase ? qty + 1 : (qty > 1 ? qty - 1 : 1);
+                qtyInput.value = qty;
+            } else {
+                qtyInput.value = 1;
+            }
+        }
+
+        function handleBuyNow(button) {
+            const id = button.getAttribute('data-id');
+            const name = button.getAttribute('data-name'); // Make sure you use `name` not `productName`
+            const price = button.getAttribute('data-price');
+            const code = button.getAttribute('data-code');
+            const image = button.getAttribute('data-image');
+            const quantity = document.getElementById('input-quantity')?.value || 1;
+
+            // Show loading message before sending request
+            Swal.fire({
+                title: "Placing your order...",
+                text: "Please wait while we submit your quote.",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading(); // Show spinner
+                }
+            });
+
+            const productDetails = {
+                id: id,
+                name: name,
+                price: price,
+                code: code,
+                image: image,
+                quantity: quantity
+            };
+
+            // console.log("Sending data:", productDetails);
+
+            let isLoggedIn = <?= json_encode($isLoggedIn); ?>;
+            if (!isLoggedIn) {
+                window.location.href = "login.php";
+                return;
+            }
+            
+            let isLocation = <?= json_encode(!empty($userAccount['location'])); ?>;
+            if (!isLocation) {
+                alert("Please fulfill your profile Address");
+                // If user is NOT logged in, redirect to login page
+                window.location.href = "profile.php";
+                return;
+            }
+
+            fetch("libs/Sender.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(productDetails)
+            })
+            .then(response => {
+                // console.log("Response received:", response);  // Log the raw response
+                return response.text();  // Get the response as text first
+            })
+            .then(responseText => {
+                // console.log("Raw response text:", responseText);  // Log the raw text
+                try {
+                    const data = JSON.parse(responseText);  // Manually parse the JSON
+                    // console.log("Parsed data:", data);  // Log the parsed JSON data
+            
+                    if (data.success) {
+                        // console.log("Order placed successfully!");
+                        Swal.fire({
+                            icon: "success",
+                            title: "Order Placed!",
+                            html: `
+                                <p>Your Code is <strong>${data.order_id}</strong>.</p>
+                                <p>Your order was placed successfully from <strong>Sree Varsha Engineering Works</strong>.</p>
+                                <button onclick="window.location.href='tel:9363126467'" class="contact-btn btn btn-outline-primary">
+                                    📞 Call: 9363126467
+                                </button>
+                                <button onclick="window.open('https://wa.me/9791641548', '_blank')" class="whatsapp-btn btn btn-outline-success">
+                                    ✅ WhatsApp
+                                </button>
+                            `,
+                            confirmButtonText: "OK",
+                        });
+                    } else {
+                        // console.log("Error in placing order:", data.message);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: data.message || "An unexpected error occurred."
+                        });
+                    }
+                } catch (error) {
+                    // console.error("Error parsing response as JSON:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "An unexpected error occurred. Please try again later."
+                    });
+                }
+            })
+            .catch(error => {
+                // console.error("Fetch error:", error);  // Log any error that occurs in the fetch process
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "An unexpected error occurred. Please try again later."
+                });
+            });
+        }
+    </script>
+
 </html>
